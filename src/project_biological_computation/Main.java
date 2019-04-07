@@ -18,7 +18,13 @@ public class Main implements Cores{
         // TODO code application logic here
         //ArrayList <Influenza> virus = new ArrayList<>();
         //Cabeca c1 = new Cabeca();
-        //virus.add(new Influenza() );   
+        //virus.add(new Influenza() ); 
+        for(int i=0;i<30;i++){
+            System.out.print(ansi_Amarelo + "  ");
+        }
+        for(int i=0;i<30;i++){
+            System.out.println(ansi_Branco+" ");
+        }
     }
     
 }
