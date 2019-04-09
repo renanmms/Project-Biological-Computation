@@ -14,17 +14,21 @@ public class Main implements Cores{
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        //ArrayList <Influenza> virus = new ArrayList<>();
-        //Cabeca c1 = new Cabeca();
-        //virus.add(new Influenza() ); 
-        for(int i=0;i<30;i++){
-            System.out.print(ansi_Amarelo + "  ");
-        }
-        for(int i=0;i<30;i++){
-            System.out.println(ansi_Branco+" ");
-        }
-    }
+    public static void main(String[] args)
+    {
+        Cabeca c1 = new Cabeca();
+        //c1.desenhaCabelo();
+        
+        int mapa[][] = new int[30][60];
+        mapa[25][25] = 41;
+        
+       for(int i = 0 ;i<30;i++){
+            for(int j = 0; j<60;j++){
+                System.out.print(mapa[i][j]);
+            }
+            System.out.println();
+        } 
+        
     
+    }
 }

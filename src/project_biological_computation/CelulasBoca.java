@@ -9,7 +9,11 @@ package project_biological_computation;
  * @author unifrsilva
  */
 public class CelulasBoca extends Celulas {
-    /*CelulasBoca(Integer cor){
+    CelulasBoca(int cor){
+        this.cor = cor;
+    }
     
-    }*/
+    public void preenche_mapa_
+    
+    
 }

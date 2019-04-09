@@ -10,23 +10,47 @@ package project_biological_computation;
  * @author unifrsilva
  */
 public class Cabeca {
-    //Integer[][] mapa = new Integer[30][60];
-    Integer[][] mapinha = new Integer[4][4];
+    int[][] mapa = new int[30][60];
+    CelulasNasais nariz;
+    CelulasOculares olhos;
+    CelulasBoca boca;
     
-    //public void desenhaCabeca();
-    //Influenza i1 = new Influenza();
-    
-    /*public void criaRosto(){
-        for(int i=0;i<4;i++){
-            System.out.println("");
+    //Para testes
+    public void imprimeMapa(){
+        for(int i = 0;i<30;i++){
+            for(int j = 0; j<60;j++){
+                System.out.print(mapa[i][j]+" ");
+            }
+            System.out.println();
         }
-    }*/
+    }
     
-    /*public void criaOlhos(){
+    
+    
+    private void preencherBoca(){
+        boca = new CelulasBoca(41);
+        for(int i = 20; i<25;i++){//<--VERIFICAR RESULTADOS
+            for(int j = 0; j<5 ; j++){//<--VERIFICAR RESULTADOS
+                System.out.print("\u001B["+boca.cor+"m");
+            }
+        }
+    }
+    
+    private void preencherNariz(){
+        nariz = new CelulasNasais(44);
+        //for(int i = 0; i<;)
+        nariz.preenche_mapa_Nariz(25,25,30,35,nariz.cor);
+    }
+    
+    private void preencherBorda(){
+    
+    }
+    
+    private void preencherMapa(){
         
     }
     
-    public void criaBoca(){
+    public void desenhaCabelo(){
         
-    }*/
+    }
 }

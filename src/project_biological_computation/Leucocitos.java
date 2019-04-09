@@ -11,7 +11,7 @@ import java.util.Date;
  * @author unifrsilva
  */
 public class Leucocitos extends Celulas {
-    //Integer velocidade;
-    //Date nascimento;
+    int velocidade;
+    Date nascimento;
     
 }

@@ -10,7 +10,7 @@ package project_biological_computation;
  * @author unifrsilva
  */
 public class CelulasOculares extends Celulas {
-    /*CelulasOculares(Integer cor){
-        
-    }*/
+    CelulasOculares(int cor){
+        this.cor = cor;
+    }
 }

@@ -10,8 +10,6 @@ package project_biological_computation;
  * @author unifrsilva
  */
 public abstract class Celulas {
-    //Integer x;
-    //Integer y;
-    //Integer cor;
+    int x,y,cor;
     
 }
