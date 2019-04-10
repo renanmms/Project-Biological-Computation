@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package project_biological_computation;
-
 /**
  *
  * @author unifrsilva
@@ -24,9 +23,7 @@ public class Cabeca {
             System.out.println();
         }
     }
-    
-    
-    
+     
     private void preencherBoca(){
         
         for(int i = 20; i<25;i++){//<--VERIFICAR RESULTADOS
@@ -39,11 +36,15 @@ public class Cabeca {
     private void preencherNariz(){
       
         //for(int i = 0; i<;)
-        nariz.preenche_mapa_Nariz(25,25,30,35,nariz.cor);
+        nariz.preencherCelula(25,25,30,35,nariz.cor);
+    }
+    
+    private void preencherOlhos(){
+        olhos.preencherCelula(5,10,10,15,olhos.cor);
     }
     
     private void preencherBorda(){
-    
+        
     }
     
     private void preencherMapa(){
