@@ -11,9 +11,9 @@ package project_biological_computation;
  */
 public class Cabeca {
     int[][] mapa = new int[30][60];
-    CelulasNasais nariz;
-    CelulasOculares olhos;
-    CelulasBoca boca;
+    CelulasNasais nariz = new CelulasNasais(47);;
+    CelulasOculares olhos = new CelulasOculares(44);
+    CelulasBoca boca = new CelulasBoca(41);;
     
     //Para testes
     public void imprimeMapa(){
@@ -28,7 +28,7 @@ public class Cabeca {
     
     
     private void preencherBoca(){
-        boca = new CelulasBoca(41);
+        
         for(int i = 20; i<25;i++){//<--VERIFICAR RESULTADOS
             for(int j = 0; j<5 ; j++){//<--VERIFICAR RESULTADOS
                 System.out.print("\u001B["+boca.cor+"m");
@@ -37,7 +37,7 @@ public class Cabeca {
     }
     
     private void preencherNariz(){
-        nariz = new CelulasNasais(44);
+      
         //for(int i = 0; i<;)
         nariz.preenche_mapa_Nariz(25,25,30,35,nariz.cor);
     }

@@ -13,7 +13,9 @@ public class CelulasBoca extends Celulas {
         this.cor = cor;
     }
     
-    public void preenche_mapa_
-    
+    public void preencherCelula(int i1, int j1, int i2, int j2, int cor){
+        
+    }
+     
     
 }
