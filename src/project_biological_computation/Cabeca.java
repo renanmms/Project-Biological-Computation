@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package project_biological_computation;
+import java.util.ArrayList;
 /**
  *
  * @author unifrsilva
@@ -13,6 +14,8 @@ public class Cabeca {
     CelulasNasais nariz = new CelulasNasais(47);;
     CelulasOculares olhos = new CelulasOculares(44);
     CelulasBoca boca = new CelulasBoca(41);;
+    ArrayList <Leucocitos> leucocitos = new ArrayList<>();
+    //leucocitos.add( new Leucocitos());
     
     //Para testes
     public void imprimeMapa(){
@@ -29,7 +32,7 @@ public class Cabeca {
         
         for(int i = 24;i>22;i--){
             for(int j = 40;j>15;j--){
-                mapa[i][j] = boca.cor; 
+                mapa[i][j] = boca.getCor(); 
             }
         }
     }
@@ -37,15 +40,15 @@ public class Cabeca {
     private void preencherNariz(){
         //preenche linhas abaixo do nariz
         for(int k = 20 ;k < 38; k++){
-            mapa[14][k] = nariz.cor;
+            mapa[14][k] = nariz.getCor();
         }
         for(int k = 20 ;k < 38; k++){
-            mapa[15][k] = nariz.cor;
+            mapa[15][k] = nariz.getCor();
         }
         
         for(int i = 10 ;i < 15; i++){
             for(int j = 27; j < 32;j++){
-                mapa[i][j] = nariz.cor;
+                mapa[i][j] = nariz.getCor();
             }
         }
         
@@ -55,14 +58,14 @@ public class Cabeca {
         //preenche olho direito
         for(int i = 4; i < 8; i++){
             for(int j = 12; j < 18 ; j++){
-                mapa[i][j] = olhos.cor;
+                mapa[i][j] = olhos.getCor();
             }
         }
         
         //preenche olho esquerdo
         for(int i = 4; i < 8; i++){
             for(int j = 42; j < 48;j++){
-                mapa[i][j] = olhos.cor;
+                mapa[i][j] = olhos.getCor();
             }
         }
     }
@@ -98,6 +101,12 @@ public class Cabeca {
         preencherNariz();
     }
     
+    
+    //DESENHA
+    
+    public void desenhaLeucocitos(){
+        
+    }
     public void desenhaCabeca(){
         preencherMapa();
         for(int i = 0; i < 30; i++){

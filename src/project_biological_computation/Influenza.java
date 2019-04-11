@@ -16,6 +16,7 @@ public class Influenza extends Virus {
         
     //}
     private boolean celula;
+    
     public void mover(){
         
     }

@@ -10,5 +10,5 @@ package project_biological_computation;
  * @author unifrsilva
  */
 public abstract class Virus implements IMoveable{
-   int x,y,velocidade,cor;
+   private int x,y,velocidade,cor;
 }

@@ -10,8 +10,19 @@ package project_biological_computation;
  * @author unifrsilva
  */
 public abstract class Celulas {
-    int x,y,cor;
+    private int x,y,cor;
+    Celulas(){}
+    Celulas(int cor){
+        this.cor = cor;
+    }
+    Celulas(int x, int y, int cor){
+        this.x = x;
+        this.y = y;
+        this.cor = cor;
+    }
     
-    
+    public int getCor(){
+       return cor;
+    }
     
 }

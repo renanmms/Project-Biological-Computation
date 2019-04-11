@@ -16,4 +16,5 @@ public interface Cores {
     String ansi_Roxo = "\u001B[45m";
     String ansi_Ciano= "\u001B[46m";
     String ansi_Branco = "\u001B[47m";
+    String ansi_Reset = "\\u001B[0m";    
 }

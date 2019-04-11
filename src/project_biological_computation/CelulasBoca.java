@@ -10,7 +10,7 @@ package project_biological_computation;
  */
 public class CelulasBoca extends Celulas {
     CelulasBoca(int cor){
-        this.cor = cor;
+        super(cor);
     }
   
 }

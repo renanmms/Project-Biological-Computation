@@ -11,6 +11,16 @@ import java.util.Date;
  * @author unifrsilva
  */
 public class Leucocitos extends Celulas {
-    int velocidade;
-    Date nascimento;
+    private int velocidade;
+    private Date nascimento;
+    
+    Leucocitos(int x, int y, int cor){
+        super(x,y,cor);
+        this.velocidade = velocidade;
+        this.nascimento = nascimento;
+    }
+    
+    public void mover(){
+    
+    }
 }
