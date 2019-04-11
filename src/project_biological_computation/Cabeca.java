@@ -35,16 +35,17 @@ public class Cabeca {
     }
     
     private void preencherNariz(){
-        //preenche linha abaixo do nariz
+        //preenche linhas abaixo do nariz
         for(int k = 12 ;k < 28; k++){
-            mapa[19][k] = 43;
+            mapa[19][k] = nariz.cor;
         }
         for(int k = 12 ;k < 28; k++){
-            mapa[20][k] = 43;
+            mapa[20][k] = nariz.cor;
         }
+        
         for(int i = 15 ;i < 20; i++){
             for(int j = 20; j <25;j++){
-                mapa[i][j] = 43;
+                mapa[i][j] = nariz.cor;
             }
         }
         
@@ -54,13 +55,14 @@ public class Cabeca {
         //preenche olho direito
         for(int i = 4; i < 8; i++){
             for(int j = 4; j < 10 ; j++){
-                mapa[i][j] = 44;
+                mapa[i][j] = olhos.cor;
             }
         }
+        
         //preenche olho esquerdo
         for(int i = 4; i < 8; i++){
             for(int j = 32; j < 38;j++){
-                mapa[i][j] = 44;
+                mapa[i][j] = olhos.cor;
             }
         }
     }
@@ -71,10 +73,10 @@ public class Cabeca {
             mapa[b][0] = 47;
             mapa[b][59] = 47; 
         }
-    
+        
+        //preenche borda superior e inferior
         for(int cabelo = 0; cabelo < 60; cabelo++){
-            //preenche borda superior e inferior
-            mapa[0][cabelo] = 47;
+            mapa[0][cabelo] = 43;
             mapa[29][cabelo] = 47;
         }
     }
@@ -89,8 +91,9 @@ public class Cabeca {
     public void desenhaCabeca(){
         for(int i = 0; i < 30; i++){
             for(int j = 0;j < 60; j++){
-                System.out.println("\u001B["+mapa[i][j]+"m");
+                System.out.print("\u001B["+mapa[i][j]+"m"+" ");
             }
+            System.out.println();
         }
     }
 }

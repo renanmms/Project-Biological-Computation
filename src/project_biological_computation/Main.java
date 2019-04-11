@@ -40,6 +40,6 @@ public class Main implements Cores{
         
         //preenche borda
         
-       c1.imprimeMapa();
+       c1.desenhaCabeca();
     }
 }
