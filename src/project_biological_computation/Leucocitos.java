@@ -13,5 +13,4 @@ import java.util.Date;
 public class Leucocitos extends Celulas {
     int velocidade;
     Date nascimento;
-    
 }

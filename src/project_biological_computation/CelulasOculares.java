@@ -14,7 +14,5 @@ public class CelulasOculares extends Celulas {
         this.cor = cor;
     }
     
-    public void preencherCelula(int i1, int j1, int i2, int j2, int cor){
-        
-    }
+    
 }

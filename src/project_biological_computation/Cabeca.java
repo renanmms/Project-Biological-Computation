@@ -16,7 +16,8 @@ public class Cabeca {
     
     //Para testes
     public void imprimeMapa(){
-        for(int i = 0;i<30;i++){
+        preencherMapa();
+        for(int i = 0;i < 30; i++){
             for(int j = 0; j<60;j++){
                 System.out.print(mapa[i][j]+" ");
             }
@@ -26,32 +27,70 @@ public class Cabeca {
      
     private void preencherBoca(){
         
-        for(int i = 20; i<25;i++){//<--VERIFICAR RESULTADOS
-            for(int j = 0; j<5 ; j++){//<--VERIFICAR RESULTADOS
-                System.out.print("\u001B["+boca.cor+"m");
+        for(int i = 26;i>22;i--){
+            for(int j = 26;j>12;j--){
+                mapa[i][j] = 41; 
             }
         }
     }
     
     private void preencherNariz(){
-      
-        //for(int i = 0; i<;)
-        nariz.preencherCelula(25,25,30,35,nariz.cor);
+        //preenche linha abaixo do nariz
+        for(int k = 12 ;k < 28; k++){
+            mapa[19][k] = 43;
+        }
+        for(int k = 12 ;k < 28; k++){
+            mapa[20][k] = 43;
+        }
+        for(int i = 15 ;i < 20; i++){
+            for(int j = 20; j <25;j++){
+                mapa[i][j] = 43;
+            }
+        }
+        
     }
     
     private void preencherOlhos(){
-        olhos.preencherCelula(5,10,10,15,olhos.cor);
+        //preenche olho direito
+        for(int i = 4; i < 8; i++){
+            for(int j = 4; j < 10 ; j++){
+                mapa[i][j] = 44;
+            }
+        }
+        //preenche olho esquerdo
+        for(int i = 4; i < 8; i++){
+            for(int j = 32; j < 38;j++){
+                mapa[i][j] = 44;
+            }
+        }
     }
     
     private void preencherBorda(){
-        
+        //preenche borda esquerda e direita
+        for(int b = 0; b < 30; b++){
+            mapa[b][0] = 47;
+            mapa[b][59] = 47; 
+        }
+    
+        for(int cabelo = 0; cabelo < 60; cabelo++){
+            //preenche borda superior e inferior
+            mapa[0][cabelo] = 47;
+            mapa[29][cabelo] = 47;
+        }
     }
     
     private void preencherMapa(){
-        
+        preencherBorda();
+        preencherOlhos();
+        preencherBoca();
+        preencherNariz();
     }
     
-    public void desenhaCabelo(){
-        
+    public void desenhaCabeca(){
+        for(int i = 0; i < 30; i++){
+            for(int j = 0;j < 60; j++){
+                System.out.println("\u001B["+mapa[i][j]+"m");
+            }
+        }
     }
 }

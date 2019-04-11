@@ -19,7 +19,7 @@ public class Main implements Cores{
         Cabeca c1 = new Cabeca();
         //c1.desenhaCabelo();
         
-        int mapa[][] = new int[30][60];
+        //int mapa[][] = new int[30][60];
         
         /*
         i1 = 5
@@ -27,39 +27,19 @@ public class Main implements Cores{
         i2 = 10
         j1 = 15
         */
-        //preenche olho direito
-        for(int i = 4; i<8;i++){//<--VERIFICAR RESULTADOS
-            for(int j = 4; j<10 ; j++){//<--VERIFICAR RESULTADOS
-                mapa[i][j] = 47;
-            }
-        }
-        //preenche olho esquerdo
-        for(int i = 4; i < 8;i++ ){
-            for(int j = 32; j<38;j++){
-                mapa[i][j] = 47;
-            }
-        }
+
+     
+
+        
         //i=y
         //j=x
         //preenche boca
-        for(int i = 26;i>22;i--){
-            for(int j = 26;j>12;j--){
-                mapa[i][j] = 41; 
-            }
-        }
+        
         
         //preenche nariz
-        for(int i = 15;i<20;i++){
-            
-        }
         
+        //preenche borda
         
-        
-       for(int i = 0 ;i<30;i++){
-            for(int j = 0; j<60;j++){
-                System.out.print(mapa[i][j]);
-            }
-            System.out.println();
-        } 
+       c1.imprimeMapa();
     }
 }

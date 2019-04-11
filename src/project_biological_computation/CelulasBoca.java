@@ -12,10 +12,5 @@ public class CelulasBoca extends Celulas {
     CelulasBoca(int cor){
         this.cor = cor;
     }
-    
-    public void preencherCelula(int i1, int j1, int i2, int j2, int cor){
-        
-    }
-     
-    
+  
 }
