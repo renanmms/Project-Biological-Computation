@@ -19,6 +19,10 @@ public class Cabeca {
     ArrayList <Leucocitos> leucocitos = new ArrayList<>();
     ArrayList <Influenza> virus = new ArrayList<>();
     
+    public void qtdVL(){
+        System.out.println("Influenza: " + virus.size() + "  " + "Leucocitos: " + leucocitos.size());
+    }
+    
     //Cria os virus na posição x e y e gera posições aleatorioas
     public void criaVirus(){
         for(int i = 0; i < 6;i++){
@@ -27,6 +31,7 @@ public class Cabeca {
             
         }
     }
+    
     //Cria os leucocitos na posição x e y e gera posições aleatórias
     private void criaLeucocitos(){
         for(int i = 0; i < 11;i++){
@@ -47,7 +52,13 @@ public class Cabeca {
             System.out.println();
         }
     }
-     
+    
+    
+    private void preencherLeucocitos(){
+        //criar
+    }
+    
+    //private void preencherVirus()
     private void preencherBoca(){
         for(int i = 24;i>22;i--){
             for(int j = 40;j>15;j--){
@@ -61,6 +72,7 @@ public class Cabeca {
         for(int k = 20 ;k < 38; k++){
             mapa[14][k] = nariz.getCor();
         }
+        
         for(int k = 20 ;k < 38; k++){
             mapa[15][k] = nariz.getCor();
         }
@@ -69,8 +81,7 @@ public class Cabeca {
             for(int j = 27; j < 32;j++){
                 mapa[i][j] = nariz.getCor();
             }
-        }
-        
+        } 
     }
     
     private void preencherOlhos(){
@@ -109,8 +120,6 @@ public class Cabeca {
                 mapa[18][i] = 43;
             }
         }
-        
-        
     }
     
     private void preencherMapa(){

@@ -21,7 +21,7 @@ public class Main implements Cores{
     {  
         Cabeca c1 = new Cabeca();
         int segundos = 0;
-        /*for(int i = 0; i<1000;i++){
+        for(int i = 0; i<1000;i++){
             try{
                 
                 segundos++;
@@ -35,9 +35,9 @@ public class Main implements Cores{
             }
             
             System.out.println("Tempo: "+String.valueOf(segundos));
-            c1.desenhaLeucocitos();
+            c1.qtdVL();
             c1.desenhaCabeca();
-        }*/
+        }
         
         
         //c1.desenhaCabelo();
@@ -54,7 +54,7 @@ public class Main implements Cores{
         //i=y
         //j=x
  
-        c1.imprimeMapa();
+        //c1.imprimeMapa();
        //c1.imprimeMapa();
        c1.desenhaCabeca();
     }
