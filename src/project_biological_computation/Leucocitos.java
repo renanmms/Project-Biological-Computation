@@ -21,6 +21,6 @@ public class Leucocitos extends Celulas {
     }
     
     public void mover(){
-    
+        
     }
 }

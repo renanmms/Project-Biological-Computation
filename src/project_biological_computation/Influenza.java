@@ -17,6 +17,11 @@ public class Influenza extends Virus {
     //}
     private boolean celula;
     
+    public Influenza(int x, int y, int cor){
+        super(x,y,cor);
+    }
+    
+    @Override
     public void mover(){
         
     }

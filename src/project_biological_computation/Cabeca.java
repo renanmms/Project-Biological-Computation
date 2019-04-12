@@ -5,16 +5,36 @@
  */
 package project_biological_computation;
 import java.util.ArrayList;
+import java.util.Random;
 /**
  *
  * @author unifrsilva
  */
 public class Cabeca {
     int[][] mapa = new int[30][60];
+    Random aleatorio = new Random();
     CelulasNasais nariz = new CelulasNasais(47);;
     CelulasOculares olhos = new CelulasOculares(44);
-    CelulasBoca boca = new CelulasBoca(41);;
+    CelulasBoca boca = new CelulasBoca(41);
     ArrayList <Leucocitos> leucocitos = new ArrayList<>();
+    ArrayList <Influenza> virus = new ArrayList<>();
+    
+    //Cria os virus na posição x e y e gera posições aleatorioas
+    public void criaVirus(){
+        for(int i = 0; i < 6;i++){
+            virus.add( new Influenza(aleatorio.nextInt(59), aleatorio.nextInt(29),45));
+            mapa[virus.get(i).getY()][virus.get(i).getX()] = virus.get(i).getCor();
+            
+        }
+    }
+    //Cria os leucocitos na posição x e y e gera posições aleatórias
+    private void criaLeucocitos(){
+        for(int i = 0; i < 11;i++){
+            leucocitos.add( new Leucocitos(aleatorio.nextInt(59),aleatorio.nextInt(29),46));
+            mapa[leucocitos.get(i).getY()][leucocitos.get(i).getX()] = leucocitos.get(i).getCor();
+        }
+    }
+    
     //leucocitos.add( new Leucocitos());
     
     //Para testes
@@ -29,7 +49,6 @@ public class Cabeca {
     }
      
     private void preencherBoca(){
-        
         for(int i = 24;i>22;i--){
             for(int j = 40;j>15;j--){
                 mapa[i][j] = boca.getCor(); 
@@ -99,14 +118,18 @@ public class Cabeca {
         preencherOlhos();
         preencherBoca();
         preencherNariz();
+        criaLeucocitos();
+        criaVirus();
     }
     
     
     //DESENHA
     
-    public void desenhaLeucocitos(){
+    public void desenhaLeucocitos(int x, int y){
+        
         
     }
+    
     public void desenhaCabeca(){
         preencherMapa();
         for(int i = 0; i < 30; i++){
