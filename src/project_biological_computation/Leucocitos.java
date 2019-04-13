@@ -5,15 +5,16 @@
  */
 package project_biological_computation;
 import java.util.Date;
-
+import java.util.Random;
 /**
  *
  * @author unifrsilva
  */
 public class Leucocitos extends Celulas {
-    private int velocidade;
+    private int velocidade = 2;
     private Date nascimento;
-    
+    Random random = new Random();
+    Leucocitos(){}
     Leucocitos(int x, int y, int cor){
         super(x,y,cor);
         this.velocidade = velocidade;
@@ -21,6 +22,46 @@ public class Leucocitos extends Celulas {
     }
     
     public void mover(){
-        
+        /*if(random.nextInt(4)==1){
+            setX(getX()+velocidade);
+        }
+        if(random.nextInt(5)==2){
+            setY(getY()+velocidade);
+        }
+        if(random.nextInt(5)==3){
+            setX(getX()-velocidade);
+        }
+        if(random.nextInt(5)==4){
+            setY(getY()-velocidade);
+        }*/
+        int w,s,a,d;
+        switch(random.nextInt(5)){
+            
+            case 1:
+                d = getX();
+                setX(0);
+                setX(d+velocidade);
+                break;
+            case 2:
+                a = getX();
+                setX(a - velocidade);
+                break;
+            case 3:
+                w = getY();
+                setY(0);
+                setY(w+velocidade);
+                break;
+            case 4:
+                s = getY();
+                setY(0);
+                setY(getY() - velocidade);
+                break;
+            default:
+        }
+    }
+    
+    
+    public int getVelocidade(){
+        return velocidade;
     }
 }

@@ -10,9 +10,9 @@ package project_biological_computation;
  * @author unifrsilva
  */
 public abstract class Virus implements IMoveable{
-   private int x,y,velocidade,cor;
+   private int x,y,velocidade = 2,cor;
    
-   
+   Virus(){}
    Virus(int x, int y, int cor){
        this.x = x;
        this.y = y;
@@ -36,5 +36,17 @@ public abstract class Virus implements IMoveable{
    
    public int getY(){
        return y;
+   }
+   
+   public void setX(int x){
+       this.x = x;
+   }
+   
+   public void setY(int y){
+       this.y = y;
+   }
+   
+   public int getVelocidade(){
+       return velocidade;
    }
 }

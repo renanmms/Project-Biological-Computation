@@ -5,8 +5,7 @@
  */
 package project_biological_computation;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 /**
  *
@@ -21,6 +20,7 @@ public class Main implements Cores{
     {  
         Cabeca c1 = new Cabeca();
         int segundos = 0;
+        
         for(int i = 0; i<1000;i++){
             try{
                 
@@ -34,28 +34,14 @@ public class Main implements Cores{
                 System.out.println();
             }
             
-            System.out.println("Tempo: "+String.valueOf(segundos));
+            System.out.println("\u001B[37m " + "Tempo: "+" "+String.valueOf(segundos)+"\u001B[0m");
             c1.qtdVL();
             c1.desenhaCabeca();
+            
+            //c1.desenhaCabeca();
         }
         
         
-        //c1.desenhaCabelo();
         
-        //int mapa[][] = new int[30][60];
-        
-        /*
-        i1 = 5
-        j1 = 10
-        i2 = 10
-        j1 = 15
-        */
-        
-        //i=y
-        //j=x
- 
-        //c1.imprimeMapa();
-       //c1.imprimeMapa();
-       c1.desenhaCabeca();
     }
 }

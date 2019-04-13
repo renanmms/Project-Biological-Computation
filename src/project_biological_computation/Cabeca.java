@@ -19,26 +19,53 @@ public class Cabeca {
     ArrayList <Leucocitos> leucocitos = new ArrayList<>();
     ArrayList <Influenza> virus = new ArrayList<>();
     
+    public void cria(){
+        for(int i  = 0 ; i<5; i ++){
+            
+        }
+            
+        for(int j = 0; j <11;  j++){
+            leucocitos.add(new Leucocitos());
+        }
+    }
+    
+    
     public void qtdVL(){
-        System.out.println("Influenza: " + virus.size() + "  " + "Leucocitos: " + leucocitos.size());
+        System.out.println("\u001B[37m"+"Influenza: " + virus.size() + "  " + "Leucocitos: " + leucocitos.size()+"\u001B[0m");
     }
     
     //Cria os virus na posição x e y e gera posições aleatorioas
-    public void criaVirus(){
+    public void preencher(){
+        for(int i = 0; i < 11;i++){
+            try{
+                mapa[virus.get(i).getY()][virus.get(i).getX()] = virus.get(i).getCor(); 
+            }catch(IndexOutOfBoundsException e1){   
+                virus.add( new Influenza(aleatorio.nextInt(59), aleatorio.nextInt(29),45));
+            } 
+        }
+        
         for(int i = 0; i < 6;i++){
-            virus.add( new Influenza(aleatorio.nextInt(59), aleatorio.nextInt(29),45));
-            mapa[virus.get(i).getY()][virus.get(i).getX()] = virus.get(i).getCor();
-            
+            try{
+                mapa[leucocitos.get(i).getY()][leucocitos.get(i).getX()] = leucocitos.get(i).getCor();
+            }catch(IndexOutOfBoundsException e1){
+                leucocitos.add( new Leucocitos(aleatorio.nextInt(59), aleatorio.nextInt(29),46));
+            }
         }
     }
     
-    //Cria os leucocitos na posição x e y e gera posições aleatórias
-    private void criaLeucocitos(){
-        for(int i = 0; i < 11;i++){
-            leucocitos.add( new Leucocitos(aleatorio.nextInt(59),aleatorio.nextInt(29),46));
-            mapa[leucocitos.get(i).getY()][leucocitos.get(i).getX()] = leucocitos.get(i).getCor();
+    public void atualiza(){
+        preencher();
+        
+        for(int i = 0; i < virus.size(); i++){
+            virus.get(i).mover();
+        }
+        
+        for(int j = 0; j < leucocitos.size();j++){
+            leucocitos.get(j).mover();
         }
     }
+    //Cria os leucocitos na posição x e y e gera posições aleatórias
+   
     
     //leucocitos.add( new Leucocitos());
     
@@ -53,10 +80,6 @@ public class Cabeca {
         }
     }
     
-    
-    private void preencherLeucocitos(){
-        //criar
-    }
     
     //private void preencherVirus()
     private void preencherBoca(){
@@ -123,24 +146,25 @@ public class Cabeca {
     }
     
     private void preencherMapa(){
+        atualiza();
         preencherBorda();
         preencherOlhos();
         preencherBoca();
         preencherNariz();
-        criaLeucocitos();
-        criaVirus();
+        
+        //criaLeucocitos();
+        //criaVirus();
     }
     
     
     //DESENHA
     
-    public void desenhaLeucocitos(int x, int y){
-        
-        
-    }
     
+  
     public void desenhaCabeca(){
+        
         preencherMapa();
+        
         for(int i = 0; i < 30; i++){
             for(int j = 0;j < 60; j++){
                 System.out.print("\u001B["+mapa[i][j]+"m"+" ");
@@ -148,4 +172,6 @@ public class Cabeca {
             System.out.println();
         }
     }
+    
+    
 }
