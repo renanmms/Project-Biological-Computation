@@ -14,6 +14,7 @@ public class Leucocitos extends Celulas {
     private int velocidade = 2;
     private Date nascimento;
     Random random = new Random();
+    
     Leucocitos(){}
     Leucocitos(int x, int y, int cor){
         super(x,y,cor);
@@ -39,27 +40,28 @@ public class Leucocitos extends Celulas {
             
             case 1:
                 d = getX();
-                setX(0);
                 setX(d+velocidade);
                 break;
+                
             case 2:
                 a = getX();
                 setX(a - velocidade);
                 break;
+                
             case 3:
                 w = getY();
-                setY(0);
                 setY(w+velocidade);
                 break;
+                
             case 4:
                 s = getY();
-                setY(0);
-                setY(getY() - velocidade);
+                setY(s - velocidade);
                 break;
+                
             default:
+                
         }
     }
-    
     
     public int getVelocidade(){
         return velocidade;

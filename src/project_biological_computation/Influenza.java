@@ -17,8 +17,10 @@ public class Influenza extends Virus {
     //}
     
     Random random = new Random();
-    private boolean celula;
+    private boolean estaNaCelula = false;
     public Influenza(){}
+    
+    
     public Influenza(int x, int y, int cor){
         super(x,y,cor);
     }
@@ -29,28 +31,31 @@ public class Influenza extends Virus {
         int w;
         int a;
         int s;
-        if(random.nextInt(5)==1){
-            d = getX();
-            setX(0);
-            setX(d + getVelocidade());
-            
-        }
-        if(random.nextInt(5)==2){
-            w = getY();
-            setY(0);
-            setY(w + getVelocidade());
-        }
-        if(random.nextInt(5)==3){
-            a = getX();
-            setX(0);
-            setX(a - getVelocidade());
-        }
-        if(random.nextInt(5)==4){
-            s = getY();
-            setY(0);
-            setY(s - getVelocidade());
-        }
+        
+        if(estaNaCelula){
+            //Direita
+            if(random.nextInt(5) == 1){
+                d = getX();            
+                setX(d + getVelocidade());
+            }
+            //Cima
+            if(random.nextInt(5) == 2){
+                w = getY();
+                setY(w + getVelocidade());
+            }
+            //Esquerda
+            if(random.nextInt(5) == 3){
+                a = getX();
+                setX(a - getVelocidade());
+            }
+            if(random.nextInt(5) == 4){
+                s = getY();
+                setY(s - getVelocidade());
+            }
+        }   
     }
     
-    
+    public void setEstaNaCelula(boolean estaNaCelula){
+        this.estaNaCelula = estaNaCelula;
+    }
 }

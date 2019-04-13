@@ -12,6 +12,7 @@ import java.util.Random;
  */
 public class Cabeca {
     int[][] mapa = new int[30][60];
+    int[][] mapaOriginal = mapa;
     Random aleatorio = new Random();
     CelulasNasais nariz = new CelulasNasais(47);;
     CelulasOculares olhos = new CelulasOculares(44);
@@ -19,72 +20,78 @@ public class Cabeca {
     ArrayList <Leucocitos> leucocitos = new ArrayList<>();
     ArrayList <Influenza> virus = new ArrayList<>();
     
-    public void cria(){
+    /*public void cria(){
         for(int i  = 0 ; i<5; i ++){
             
-        }
-            
+        } 
         for(int j = 0; j <11;  j++){
             leucocitos.add(new Leucocitos());
         }
-    }
+    }*/
     
     
     public void qtdVL(){
         System.out.println("\u001B[37m"+"Influenza: " + virus.size() + "  " + "Leucocitos: " + leucocitos.size()+"\u001B[0m");
     }
     
-    //Cria os virus na posição x e y e gera posições aleatorioas
-    public void preencher(){
-        for(int i = 0; i < 11;i++){
+    //Cria os virus na posição x e y aleatoria.
+    public void atualiza(){
+        //preenche
+        for(int i = 0; i < 11; i++){
             try{
                 mapa[virus.get(i).getY()][virus.get(i).getX()] = virus.get(i).getCor(); 
             }catch(IndexOutOfBoundsException e1){   
                 virus.add( new Influenza(aleatorio.nextInt(59), aleatorio.nextInt(29),45));
-            } 
+            }
         }
         
-        for(int i = 0; i < 6;i++){
+        for(int i = 0; i < 6 ; i++){
             try{
                 mapa[leucocitos.get(i).getY()][leucocitos.get(i).getX()] = leucocitos.get(i).getCor();
             }catch(IndexOutOfBoundsException e1){
                 leucocitos.add( new Leucocitos(aleatorio.nextInt(59), aleatorio.nextInt(29),46));
             }
         }
-    }
-    
-    public void atualiza(){
-        preencher();
-        
+        //mover
+        int tempX;
+        int tempY;
+       //preencher();
         for(int i = 0; i < virus.size(); i++){
-            virus.get(i).mover();
+            tempX = virus.get(i).getX();
+            tempY = virus.get(i).getY();
+            //mapa[tempY][tempX] = 0;
+            virus.get(i).mover(); 
+            mapa[tempY][tempX] = 0;
         }
         
-        for(int j = 0; j < leucocitos.size();j++){
+        for(int j = 0; j < leucocitos.size(); j++){
+            tempX = leucocitos.get(j).getX();
+            tempY = leucocitos.get(j).getY();
+            //mapa[tempY][tempX] = 0;
             leucocitos.get(j).mover();
+            mapa[tempY][tempX] = 0;
         }
     }
-    //Cria os leucocitos na posição x e y e gera posições aleatórias
-   
     
-    //leucocitos.add( new Leucocitos());
+    /*public void atualiza(){
+        
+    }*/
+    
     
     //Para testes
     public void imprimeMapa(){
         preencherMapa();
         for(int i = 0;i < 30; i++){
-            for(int j = 0; j<60;j++){
+            for(int j = 0; j < 60;j++){
                 System.out.print(mapa[i][j]+" ");
             }
             System.out.println();
         }
     }
-    
-    
-    //private void preencherVirus()
+
     private void preencherBoca(){
-        for(int i = 24;i>22;i--){
-            for(int j = 40;j>15;j--){
+        for(int i = 24;i > 22;i--){
+            for(int j = 40;j > 15;j--){
                 mapa[i][j] = boca.getCor(); 
             }
         }
@@ -104,7 +111,7 @@ public class Cabeca {
             for(int j = 27; j < 32;j++){
                 mapa[i][j] = nariz.getCor();
             }
-        } 
+        }
     }
     
     private void preencherOlhos(){
@@ -135,36 +142,28 @@ public class Cabeca {
             mapa[0][cabelo] = 43;
             mapa[29][cabelo] = 47;
         }
+        
         //barba
-        for(int i = 18; i<40;i++){
-            for(int j = 0; j<3;j++){
+        for(int i = 18; i < 40; i++){
+            for(int j = 0; j < 3; j++){
                 mapa[j][18] = 43;
                 mapa[j][39] = 43;
-                mapa[18][i] = 43;
-            }
+                mapa[18][i] = 43; 
+            } 
         }
     }
     
-    private void preencherMapa(){
+    public void preencherMapa(){
         atualiza();
         preencherBorda();
         preencherOlhos();
         preencherBoca();
         preencherNariz();
-        
-        //criaLeucocitos();
-        //criaVirus();
+         
     }
     
-    
     //DESENHA
-    
-    
-  
     public void desenhaCabeca(){
-        
-        preencherMapa();
-        
         for(int i = 0; i < 30; i++){
             for(int j = 0;j < 60; j++){
                 System.out.print("\u001B["+mapa[i][j]+"m"+" ");
@@ -172,6 +171,13 @@ public class Cabeca {
             System.out.println();
         }
     }
+
+    //Getters & Setters
+    public int[][] getMapa(){
+        return mapa;
+    }
     
-    
+    public void setMapa(int [][] mapa){
+        this.mapa = mapa;
+    }
 }
