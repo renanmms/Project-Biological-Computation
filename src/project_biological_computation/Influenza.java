@@ -25,37 +25,38 @@ public class Influenza extends Virus {
         super(x,y,cor);
     }
     
-    @Override
+    
     public void mover(){
         int d;
         int w;
         int a;
         int s;
         
-        if(estaNaCelula){
-            //Direita
-            if(random.nextInt(5) == 1){
-                d = getX();            
-                setX(d + getVelocidade());
-            }
-            //Cima
-            if(random.nextInt(5) == 2){
-                w = getY();
-                setY(w + getVelocidade());
-            }
-            //Esquerda
-            if(random.nextInt(5) == 3){
-                a = getX();
-                setX(a - getVelocidade());
-            }
-            if(random.nextInt(5) == 4){
-                s = getY();
-                setY(s - getVelocidade());
-            }
-        }   
-    }
+        //Direita
+        if(random.nextInt(5) == 1){
+            d = getX();            
+            setX(d + 2);
+        }
+        //Cima
+        if(random.nextInt(5) == 2){
+            w = getY();
+            setY(w + 2);
+        }
+        //Esquerda
+        if(random.nextInt(5) == 3){
+            a = getX();
+            setX(a - 2);
+        }
+        if(random.nextInt(5) == 4){
+            s = getY();
+            setY(s - 2);
+        }
+    }   
+    
     
     public void setEstaNaCelula(boolean estaNaCelula){
         this.estaNaCelula = estaNaCelula;
     }
+    
+    
 }

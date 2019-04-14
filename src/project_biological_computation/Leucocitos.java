@@ -40,7 +40,7 @@ public class Leucocitos extends Celulas {
             
             case 1:
                 d = getX();
-                setX(d+velocidade);
+                setX(d + velocidade);
                 break;
                 
             case 2:
@@ -50,7 +50,7 @@ public class Leucocitos extends Celulas {
                 
             case 3:
                 w = getY();
-                setY(w+velocidade);
+                setY(w + velocidade);
                 break;
                 
             case 4:
