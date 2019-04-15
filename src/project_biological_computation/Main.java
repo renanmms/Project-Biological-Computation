@@ -33,10 +33,11 @@ public class Main{
             for(int j = 0;j < 40;j++){
                 System.out.println();
             }
-            System.out.println("======================================================================");
+            
             System.out.println("\u001B[37m " + "Tempo: " + " " + String.valueOf(segundos) + "\u001B[0m");
             c1.qtdVL();
             c1.desenhaCabeca();
+            
             
         }
     }

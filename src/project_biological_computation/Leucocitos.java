@@ -36,8 +36,7 @@ public class Leucocitos extends Celulas {
             setY(getY()-velocidade);
         }*/
         int w,s,a,d;
-        switch(random.nextInt(5)){
-            
+        switch(random.nextInt(9)){     
             case 1:
                 d = getX();
                 setX(d + velocidade);
@@ -56,6 +55,33 @@ public class Leucocitos extends Celulas {
             case 4:
                 s = getY();
                 setY(s - velocidade);
+                break;
+            case 5:
+                s = getY();
+                a = getX();
+                setY(s - velocidade);
+                setX(a - velocidade);
+                break;
+                
+            case 6:
+                s = getY();
+                d = getX();
+                setY(s - velocidade);
+                setX(d + velocidade);
+                break;
+            
+            case 7:
+                w = getY();
+                a = getX();
+                setY(w + velocidade);
+                setX(a - velocidade);
+                break;
+                
+            case 8:
+                w = getY();
+                d = getX();
+                setY(w - velocidade);
+                setX(d + velocidade);
                 break;
                 
             default:
