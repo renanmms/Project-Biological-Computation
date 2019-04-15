@@ -101,13 +101,10 @@ public class Cabeca {
             if(leucocitos.get(i).getX() < 0){
                 leucocitos.get(i).setX(59);
             }
-
             if(leucocitos.get(i).getY() < 0){
                 leucocitos.get(i).setY(29);
             }
-            
             //leucocitos.get(i).getTempoVida(){}
-
             if(leucocitos.get(i).getY() > 29){
                 leucocitos.get(i).setY(0);
             }
@@ -121,13 +118,13 @@ public class Cabeca {
                     conta_virus_mortos = conta_virus_mortos + 1;
                 }*/
                 //Verificar o que há de errado na multiplicação dos leucocitos (crescendo desenfreadamente)
-                /*if(leucocitos.get(i).getX() == virus.get(j).getX() + 1 || leucocitos.get(i).getX() == virus.get(j).getX() - 1 || leucocitos.get(i).getY() == virus.get(j).getY() + 1 || leucocitos.get(i).getY() == virus.get(j).getY() - 1){
+                if((leucocitos.get(i).getX() == virus.get(j).getX() + 1 && leucocitos.get(i).getY() == virus.get(j).getY()) || (leucocitos.get(i).getX() == virus.get(j).getX() - 1 && leucocitos.get(i).getY() == virus.get(j).getY()) || (leucocitos.get(i).getY() == virus.get(j).getY() + 1 && leucocitos.get(i).getX() == virus.get(i).getX()) || ( leucocitos.get(i).getY() == virus.get(j).getY() - 1 && leucocitos.get(i).getX() == virus.get(i).getX())){
                     virus.remove(j);
                     leucocitos.add( new Leucocitos(aleatorio.nextInt(59),aleatorio.nextInt(29),46));
                     qtd_leucocito = qtd_leucocito + 1;
                     conta_virus_mortos = conta_virus_mortos + 1;
                     qtd_virus = qtd_virus - conta_virus_mortos;
-                }*/
+                }
             }
         }      
     }
