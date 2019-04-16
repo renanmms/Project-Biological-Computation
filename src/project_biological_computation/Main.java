@@ -34,7 +34,7 @@ public class Main{
                 System.out.println();
             }
             
-            System.out.println("\u001B[37m " + "Tempo: " + " " + String.valueOf(segundos) + "\u001B[0m");
+            System.out.println("\u001B[37m " + "Tempo: " + String.valueOf(segundos) + "\u001B[0m");
             c1.qtdVL();
             c1.desenhaCabeca();
             

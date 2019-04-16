@@ -108,6 +108,11 @@ public class Cabeca {
             if(leucocitos.get(i).getY() > 29){
                 leucocitos.get(i).setY(0);
             }
+            
+            if(qtd_leucocito < 11){
+                leucocitos.add( new Leucocitos(aleatorio.nextInt(59), aleatorio.nextInt(29),46));
+                qtd_leucocito = qtd_leucocito + 1;
+            }
             //Verifica colisão com virus e clona leucocito em uma posição aleatoria
             for(int j = 0 ; j < qtd_virus - conta_virus_mortos; j++){
                 /*
@@ -118,7 +123,7 @@ public class Cabeca {
                     conta_virus_mortos = conta_virus_mortos + 1;
                 }*/
                 //Verificar o que há de errado na multiplicação dos leucocitos (crescendo desenfreadamente)
-                if((leucocitos.get(i).getX() == virus.get(j).getX() + 1 && leucocitos.get(i).getY() == virus.get(j).getY()) || (leucocitos.get(i).getX() == virus.get(j).getX() - 1 && leucocitos.get(i).getY() == virus.get(j).getY()) || (leucocitos.get(i).getY() == virus.get(j).getY() + 1 && leucocitos.get(i).getX() == virus.get(i).getX()) || ( leucocitos.get(i).getY() == virus.get(j).getY() - 1 && leucocitos.get(i).getX() == virus.get(i).getX())){
+                if((leucocitos.get(i).getX() == virus.get(j).getX() && leucocitos.get(i).getY() == virus.get(j).getY()) ){
                     virus.remove(j);
                     leucocitos.add( new Leucocitos(aleatorio.nextInt(59),aleatorio.nextInt(29),46));
                     qtd_leucocito = qtd_leucocito + 1;
@@ -141,6 +146,13 @@ public class Cabeca {
     }
 
     private void preencherBoca(){
+        /*
+        for(int i = 0 ; i < 24; i++){
+            celulas_boca.add( new CelulasBoca(41));
+        }
+        
+        
+        */
         for(int i = 24; i > 22 ;i--){
             for(int j = 40;j > 15;j--){
                 mapa[i][j] = boca.getCor(); 
