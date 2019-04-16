@@ -13,7 +13,7 @@ import java.util.Random;
 public class Leucocitos extends Celulas {
     private int velocidade = 2;
     private Date nascimento;
-    private int tempo = 7;
+    private int tempo = 1;
     Random random = new Random();
     //nascimento.setSeconds(7);
     Leucocitos(){}
@@ -93,8 +93,18 @@ public class Leucocitos extends Celulas {
     public int getVelocidade(){
         return velocidade;
     }
-    
-    public int getTempoVida(){
+    public int getTempo(){
         return tempo;
+    }
+    public void aumentaTempo(){
+        this.tempo++;
+    }
+    
+    public boolean limiteVida(int segundos, int tempo ){
+        if((segundos % this.tempo) == 0){
+            return true;
+        }else{
+            return false;
+        }        
     }
 }
