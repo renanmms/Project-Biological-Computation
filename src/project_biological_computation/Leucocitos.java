@@ -13,8 +13,9 @@ import java.util.Random;
 public class Leucocitos extends Celulas {
     private int velocidade = 2;
     private Date nascimento;
+    private int tempo = 7;
     Random random = new Random();
-    
+    //nascimento.setSeconds(7);
     Leucocitos(){}
     Leucocitos(int x, int y, int cor){
         super(x,y,cor);
@@ -91,5 +92,9 @@ public class Leucocitos extends Celulas {
     
     public int getVelocidade(){
         return velocidade;
+    }
+    
+    public int getTempoVida(){
+        return tempo;
     }
 }

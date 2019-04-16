@@ -16,24 +16,11 @@ public class Cabeca {
     int qtd_virus = 11;
     //int[][] mapaOriginal = mapa;
     Random aleatorio = new Random();
-    CelulasNasais nariz = new CelulasNasais(47);
-    CelulasOculares olhos = new CelulasOculares(44);
-    CelulasBoca boca = new CelulasBoca(41);
-    
     ArrayList <CelulasBoca> celulas_boca = new ArrayList<>();
     ArrayList <CelulasNasais> celulas_nariz = new ArrayList<>();
     ArrayList <CelulasOculares> celulas_olhos = new ArrayList<>();
     ArrayList <Leucocitos> leucocitos = new ArrayList<>();
     ArrayList <Influenza> virus = new ArrayList<>();//<-- VERIFICAR DEPOIS
-    
-    /*public void cria(){
-        for(int i  = 0 ; i<5; i ++){
-            
-        } 
-        for(int j = 0; j <11;  j++){
-            leucocitos.add(new Leucocitos());
-        }
-    }*/
 
     public void qtdVL(){
         System.out.println("\u001B[37m"+"Influenza: " + (qtd_virus-1) + "  " + "Leucocitos: " + (qtd_leucocito-1)+"\u001B[0m");
@@ -41,7 +28,7 @@ public class Cabeca {
     
     //Cria os virus na posição x e y aleatoria.
     //public void atualiza(int segundos)
-    public void atualiza(){
+    public void atualiza(int segundos){
         int conta_virus_mortos = 0;
         //preenche
         for(int i = 0; i < 30; i++){
@@ -117,6 +104,10 @@ public class Cabeca {
                 leucocitos.add( new Leucocitos(aleatorio.nextInt(59), aleatorio.nextInt(29),46));
                 qtd_leucocito = qtd_leucocito + 1;
             }
+            if(segundos % leucocitos.get(i).getTempoVida() == 0){
+                leucocitos.remove(i);
+                qtd_leucocito--;
+            }
             //Verifica colisão com virus e clona leucocito em uma posição aleatoria
             for(int j = 0 ; j < qtd_virus - conta_virus_mortos; j++){
                 /*
@@ -132,7 +123,7 @@ public class Cabeca {
                     leucocitos.add( new Leucocitos(aleatorio.nextInt(59),aleatorio.nextInt(29),46));
                     qtd_leucocito = qtd_leucocito + 1;
                     conta_virus_mortos = conta_virus_mortos + 1;
-                    qtd_virus = qtd_virus - conta_virus_mortos;
+                    //qtd_virus = qtd_virus - conta_virus_mortos;
                 }
             }
         }      
@@ -306,8 +297,8 @@ public class Cabeca {
     //}
     
     //DESENHA
-    public void desenhaCabeca(){
-        atualiza();
+    public void desenhaCabeca(int segundos){
+        atualiza(segundos);
         for(int i = 0; i < 30; i++){
             for(int j = 0;j < 60; j++){
                 System.out.print("\u001B[" + mapa[i][j] + "m" + " ");
