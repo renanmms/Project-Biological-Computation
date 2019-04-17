@@ -65,8 +65,6 @@ public class Cabeca {
                 virus.add(new Influenza(aleatorio.nextInt(59), aleatorio.nextInt(29),45));
                 qtd_virus++;
             }
-            
-            
         }
         
         for(int i = 0; i < qtd_leucocito ; i++){
@@ -98,11 +96,7 @@ public class Cabeca {
                 leucocitos.add( new Leucocitos(aleatorio.nextInt(59), aleatorio.nextInt(29),46));
                 qtd_leucocito++;
             }
-            //if(leucocitos.get(i).limiteVida(segundos, leucocitos.get(i).getTempo())){
-             //   leucocitos.remove(i);
-             //   qtd_leucocito--;
-             //   //conta_leucocitos_mortos++;
-           // }
+            
             
             for(int j = 0 ; j < qtd_virus; j++){
                 try{
@@ -117,16 +111,18 @@ public class Cabeca {
                     qtd_leucocito++;
                 }   
             }
-           
+            
+            if(leucocitos.get(i).getTempo() % segundos == 0 && leucocitos.get(i).getTempo() % 7 == 0){
+               leucocitos.remove(i);
+               qtd_leucocito--;
+            }
+            leucocitos.get(i).aumentaTempo();
         }      
     }
+
     
-    
-    
- 
-    //Para testes
     public void imprimeMapa(){
-        //preencherMapa();
+        
         for(int i = 0; i < 30 ; i++){
             for(int j = 0; j < 60;j++){
                 System.out.print(mapa[i][j]+" ");
@@ -230,7 +226,7 @@ public class Cabeca {
     
     
     
-    //DESENHA
+    
     public void desenhaCabeca(int segundos){
         atualiza(segundos);
         for(int i = 0; i < 30; i++){
