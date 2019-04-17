@@ -100,11 +100,11 @@ public class Leucocitos extends Celulas {
         this.tempo++;
     }
     
-    public boolean limiteVida(int segundos, int tempo ){
-        if((segundos % this.tempo) == 0){
-            return true;
-        }else{
-            return false;
-        }        
-    }
+    ///public boolean limiteVida(int segundos, int tempo ){;
+      //  if(){
+       //     return true;
+      //  }else{
+       //     return false;
+       // }        
+    //}
 }
