@@ -6,36 +6,44 @@
 package project_biological_computation;
 import java.util.Date;
 import java.util.Random;
+import java.util.ArrayList;
 /**
  *
  * @author unifrsilva
  */
 public class Leucocitos extends Celulas {
     private int velocidade = 2;
-    private Date nascimento;
+    private Date nascimento =  new Date();
     private int tempo = 1;
     Random random = new Random();
-    //nascimento.setSeconds(7);
+    
     Leucocitos(){}
     Leucocitos(int x, int y, int cor){
         super(x,y,cor);
         this.velocidade = velocidade;
         this.nascimento = nascimento;
     }
-    
+    /**
+     * Construtor de Leucocitos que recebe posição e cor do Leucocito.
+     * @param x
+     * @param y
+     * @param cor
+     * @param d 
+     */
+    public Leucocitos(int x, int y, int cor, Date d){
+        super(cor);
+        this.setX(x);
+        this.setY(y);
+        this.setData(d);
+        
+        
+    }
+
+    /**
+     * Método mover implementado através da inteface IMoveable que fará os Leucocitos se moverem nas oito direções.
+     */
     public void mover(){
-        /*if(random.nextInt(4)==1){
-            setX(getX()+velocidade);
-        }
-        if(random.nextInt(5)==2){
-            setY(getY()+velocidade);
-        }
-        if(random.nextInt(5)==3){
-            setX(getX()-velocidade);
-        }
-        if(random.nextInt(5)==4){
-            setY(getY()-velocidade);
-        }*/
+       
         int w,s,a,d;
         switch(random.nextInt(9)){     
             case 1:
@@ -90,21 +98,28 @@ public class Leucocitos extends Celulas {
         }
     }
     
+    public long getTempo(){
+        return nascimento.getTime();
+    }
+    
     public int getVelocidade(){
         return velocidade;
     }
-    public int getTempo(){
-        return tempo;
-    }
+    
     public void aumentaTempo(){
         this.tempo++;
     }
     
-    ///public boolean limiteVida(int segundos, int tempo ){;
-      //  if(){
-       //     return true;
-      //  }else{
-       //     return false;
-       // }        
-    //}
+    
+    public Date getData(){
+        return nascimento;
+    }
+    
+    public void setData(Date d){
+        this.nascimento = d;
+    }
+    
+    
+    
+    
 }

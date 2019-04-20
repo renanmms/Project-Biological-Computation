@@ -11,7 +11,14 @@ package project_biological_computation;
  */
 public abstract class Celulas {
     private int x,y,cor;
+    /**
+     * Construtor de Celulas
+     */
     Celulas(){}
+    /**
+     * Construtor de Celulas que vai receber posição e cor das celulas.
+     * @param cor 
+     */
     Celulas(int cor){
         this.cor = cor;
     }

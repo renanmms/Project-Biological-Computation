@@ -1,10 +1,12 @@
 /*
+
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package project_biological_computation;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 /**
  *
@@ -14,7 +16,8 @@ public class Cabeca {
     int[][] mapa = new int[30][60];
     int qtd_leucocito = 10;
     int qtd_virus = 5;
-   
+    Date data = new Date();
+    
     Random aleatorio = new Random();
     ArrayList <CelulasBoca> celulas_boca = new ArrayList<>();
     ArrayList <CelulasNasais> celulas_nariz = new ArrayList<>();
@@ -22,12 +25,18 @@ public class Cabeca {
     ArrayList <Leucocitos> leucocitos = new ArrayList<>();
     ArrayList <Influenza> virus = new ArrayList<>();//<-- VERIFICAR DEPOIS
    
+    /**
+     * Metodo que a imprime Quantidade de Virus e Leucocitos.
+     */
     public void qtdVL(){
         System.out.println("\u001B[35m"+"\u001B[45m" + " " + "\u001B[0m" + "\u001B[35m" + " Influenza: " + "\u001B[0m" + "\u001B[35m" + (virus.size()) + "\u001B[0m" + "  " + "\u001B[46m"+ " " + "\u001B[0m" + "\u001B[35m"+ " Leucocitos: " + (leucocitos.size())+"\u001B[0m");
     }
     
-    ///comentarios
-    public void atualiza(int segundos){
+   /**
+    * Atualiza o programa periodicamente.
+    * 
+    */
+    public void atualiza(long time){
 
         zeraMatriz();
         preencherBorda();
@@ -46,22 +55,24 @@ public class Cabeca {
                 virus.get(i).mover();
                
             }
-            if(virus.get(i).getX() >= 59){
+            if(virus.get(i).getX() > 59){
                 virus.get(i).setX(0);
             }
 
-            if(virus.get(i).getX() <= 0){
+            if(virus.get(i).getX() < 0){
                 virus.get(i).setX(59);
             }
 
-            if(virus.get(i).getY() >= 29){
+            if(virus.get(i).getY() > 29){
                 virus.get(i).setY(0);
             }
 
-            if(virus.get(i).getY() <= 0){
+            if(virus.get(i).getY() < 0){
                 virus.get(i).setY(29);
             }
             if(colisaoNariz(virus.get(i).getX(),virus.get(i).getY()) || colisaoOlhos(virus.get(i).getX(), virus.get(i).getY()) || colisaoBoca(virus.get(i).getX(),virus.get(i).getY())){
+                virus.remove(i);
+                virus.add( new Influenza(aleatorio.nextInt(59), aleatorio.nextInt(29),45));
                 virus.add(new Influenza(aleatorio.nextInt(59), aleatorio.nextInt(29),45));
                 qtd_virus++;
             }
@@ -77,18 +88,18 @@ public class Cabeca {
             if(leucocitos.get(i).getX() >= 0 && leucocitos.get(i).getX() <= 59 || leucocitos.get(i).getY() >= 30 && leucocitos.get(i).getY() <= 0){
                 leucocitos.get(i).mover();
             }
-            if(leucocitos.get(i).getX() >= 59){
+            if(leucocitos.get(i).getX() > 59){
                 leucocitos.get(i).setX(0);
             }
 
-            if(leucocitos.get(i).getX() <= 0){
+            if(leucocitos.get(i).getX() < 0){
                 leucocitos.get(i).setX(59);
             }
-            if(leucocitos.get(i).getY() <= 0){
+            if(leucocitos.get(i).getY() < 0){
                 leucocitos.get(i).setY(29);
             }
-            //leucocitos.get(i).getTempoVida(){}
-            if(leucocitos.get(i).getY() >= 29){
+            
+            if(leucocitos.get(i).getY() > 29){
                 leucocitos.get(i).setY(0);
             }
             
@@ -112,25 +123,32 @@ public class Cabeca {
                 }   
             }
             
-            if(leucocitos.get(i).getTempo() % segundos == 0 && leucocitos.get(i).getTempo() % 7 == 0){
-               leucocitos.remove(i);
-               qtd_leucocito--;
-            }
-            leucocitos.get(i).aumentaTempo();
-        }      
+            //if(checaTempo(leucocitos.get(i))){
+              //  leucocitos.remove(i);
+                //qtd_leucocito--;
+            //}
+            
+            //if(leucocitos.get(i).getTempo() == leucocitos.get(i).getTempo() ){
+              //  leucocitos.remove(i);
+               // qtd_leucocito--;
+           // }
+            
+            
+        }        
     }
-
     
-    public void imprimeMapa(){
-        
-        for(int i = 0; i < 30 ; i++){
-            for(int j = 0; j < 60;j++){
-                System.out.print(mapa[i][j]+" ");
-            }
-            System.out.println();
+    public boolean checaTempo(Leucocitos l){
+        Date data = new Date();
+        if(l.getTempo() - System.currentTimeMillis() >= 7000){
+            return true;
+        }else{
+            return false;
         }
     }
     
+    /**
+     * Método colisaoBoca que vai verificar se o virus entrou em contato com a boca.
+     */
     private boolean colisaoBoca(int x, int y){
         if(x >= 18 && x < 40 && y >= 22 && y <= 24 ){
             return true;
@@ -138,8 +156,10 @@ public class Cabeca {
             return false;
         }
     }
-    //Cria o primeiro leucocito e o primeiro virus influenza
-    
+   
+    /**
+     * Método preencherBoca vai preencher a matriz mapa.
+     */
     private void preencherBoca(){    
         for(int i = 0 ; i< 20;i++){
             celulas_boca.add( new CelulasBoca(41));
@@ -153,6 +173,10 @@ public class Cabeca {
         }
     }
     
+    /**
+     * 
+     * Método colisaoNariz vai verificar se o virus entrou em contato com as células do nariz.
+     */
     private boolean colisaoNariz(int x, int y){
         if(x >= 20 && x < 38 && y >= 14 && y <= 15){
             return true;
@@ -161,6 +185,11 @@ public class Cabeca {
         }
     }
     
+    
+    /**
+     * 
+     * Método privado preenherNariz vai preencher matriz mapa com 47 para ser usado na hora de desenhar a cabeça.
+     */
     private void preencherNariz(){
        for(int i = 0 ; i < 18; i ++){
            celulas_nariz.add(new CelulasNasais(47));
@@ -178,6 +207,10 @@ public class Cabeca {
        }
     }
     
+    /**
+     * 
+     * colisaoOlhos vai verificar colisão com os olhos
+     */
     private boolean colisaoOlhos(int x, int y){
         if((x >= 12 && x < 18 || x >= 40 && x < 46) && y == 4){
             return true;
@@ -186,6 +219,7 @@ public class Cabeca {
         }
     }
     
+    /**preencherOlhos vai preencher a matriz mapa com 44 para ser desenhada na cabeça.*/
     private void preencherOlhos(){
         for( int i = 0 ; i < 4; i++){
             celulas_olhos.add( new CelulasOculares(44));
@@ -200,21 +234,23 @@ public class Cabeca {
             } 
         }
     }
-    
+    /**
+     * preencherBorda vai preencher as bordas da cabeça.
+     */
     private void preencherBorda(){
-        //preenche borda esquerda e direita
+        
         for(int b = 0; b < 30; b++){
             mapa[b][0] = 47;
             mapa[b][59] = 47; 
         }
         
-        //preenche borda superior e inferior
+        
         for(int cabelo = 0; cabelo < 60; cabelo++){
             mapa[0][cabelo] = 43;
             mapa[29][cabelo] = 47;
         }
         
-        //barba
+        
         for(int i = 18; i < 40; i++){
             for(int j = 0; j < 3; j++){
                 mapa[j][18] = 43;
@@ -226,9 +262,11 @@ public class Cabeca {
     
     
     
-    
-    public void desenhaCabeca(int segundos){
-        atualiza(segundos);
+    /**
+     * desenhaCabeca vai desenhar a cabeça lendo os números correspondentes as cores designadas nas células, virus, e leucocitos.
+     */
+    public void desenhaCabeca(long time){
+        atualiza(time);
         for(int i = 0; i < 30; i++){
             for(int j = 0;j < 60; j++){
                 System.out.print("\u001B[" + mapa[i][j] + "m" + " ");
@@ -237,6 +275,9 @@ public class Cabeca {
         }
     }
     
+    /**
+     * zeraMatriz vai zerar a matriz para ser repreenchida novamente.
+     */
     private void zeraMatriz(){
         for(int i = 0; i<30; i++){
             for(int j = 0; j<60; j++){

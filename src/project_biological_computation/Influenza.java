@@ -5,44 +5,51 @@
  */
 package project_biological_computation;
 import java.util.Random;
+
 /**
  *
  * @author unifrsilva
  */
 
 public class Influenza extends Virus {
-    //Boolean celula;
-    //Boolean estaNaCelula(){
-        
-    //}
+    
     
     Random random = new Random();
-    private boolean estaNaCelula = false;
+    /**
+     * Construtor de Influenza
+     */
     public Influenza(){}
     
-    
+    /**
+     * Construtor de Influenza que vai receber a posição e a cor do vírus.
+     * @param x
+     * @param y
+     * @param cor 
+     */
     public Influenza(int x, int y, int cor){
         super(x,y,cor);
     }
     
-    
+    /**
+     * Método implementado através da interface mover, que fará o vírus Influenza se mover.
+     */
     public void mover(){
         int d;
         int w;
         int a;
         int s;
         
-        //Direita
+        
         if(random.nextInt(5) == 1){
             d = getX();            
             setX(d + 2);
         }
-        //Cima
+        
         if(random.nextInt(5) == 2){
             w = getY();
             setY(w + 2);
         }
-        //Esquerda
+       
         if(random.nextInt(5) == 3){
             a = getX();
             setX(a - 2);
@@ -54,9 +61,7 @@ public class Influenza extends Virus {
     }   
     
     
-    public void setEstaNaCelula(boolean estaNaCelula){
-        this.estaNaCelula = estaNaCelula;
-    }
+    
     
     
 }

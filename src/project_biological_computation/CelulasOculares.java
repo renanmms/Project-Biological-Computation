@@ -7,9 +7,14 @@ package project_biological_computation;
 
 /**
  *
- * @author unifrsilva
+ * @author unifrsilva]
+ * Classe CelulasOculares que forma os olhos da cabeça.
  */
 public class CelulasOculares extends Celulas {
+    /**
+     * Construtor de CelulasOculares que receberá cor como parâmetro
+     * @param cor 
+     */
     CelulasOculares(int cor){
         super(cor);
     }

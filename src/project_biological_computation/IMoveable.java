@@ -8,7 +8,9 @@ package project_biological_computation;
 /**
  *
  * @author unifrsilva
+ * Interface IMoveable responsável pelo movimento dos virus e dos leucocitos.
  */
+
 public interface IMoveable {
     public void mover();
 }
